@@ -71,6 +71,7 @@ fn build_soxr(is_static: bool) {
     println!("cargo:info=Building Soxr via CMake.");
     let soxr_build_dir = cmake::Config::new("soxr")
         .profile("Release")
+         .define("CMAKE_POLICY_VERSION_MINIMUM", "3.5")
         .define("WITH_CR32S", "OFF")
         .define("BUILD_SHARED_LIBS", if is_static { "OFF" } else { "ON" })
         .define("WITH_OPENMP", "OFF")
